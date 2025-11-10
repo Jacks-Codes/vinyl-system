@@ -1,0 +1,210 @@
+PHASE 2 - AUDIO RECOGNITION INTEGRATION
+
+Tasks:
+1. Sign up for audio recognition API
+   - ACRCloud (recommended) or AudD
+   - Get API credentials
+
+2. Install recognition dependencies
+   pip install acrcloud requests
+
+3. Create audio fingerprinting service
+   - Capture 10-15 second audio samples
+   - Send to recognition API periodically
+   - Parse response for track metadata
+
+4. Build logging system
+   - Create SQLite database schema
+   - Store: timestamp, track, artist, album
+   - Log all recognized tracks
+
+5. Handle recognition errors
+   - API rate limiting
+   - No match found cases
+   - Network failures
+
+6. LOOK INTO ADDDING THE MIC ON PATIO AND DISPLAYING WHATS CURRENTLY PLAYING 
+OUTSIDE JUST FOR FUNSIES
+
+
+Expected outcome: Terminal displays currently playing track
+
+
+PHASE 3 - METADATA INJECTION
+
+Tasks:
+1. Research AirPlay metadata format
+   - DACP/RAOP metadata structure
+   - pyatv metadata capabilities
+
+2. Fetch album artwork
+   - Spotify API integration
+   - MusicBrainz fallback
+   - Cache images locally
+
+3. Update AirPlay stream metadata
+   - Inject title, artist, album
+   - Send album artwork
+   - Update on track change
+
+4. Test on iPhone/Apple TV
+   - Verify Control Center display
+   - Check lock screen info
+   - Confirm artwork appears
+
+Expected outcome: iPhone shows correct track info with artwork
+
+
+PHASE 4 - WEB DASHBOARD
+
+Tasks:
+1. Choose web framework
+   - FastAPI (recommended) or Flask
+   - Serve static files
+
+2. Build REST API endpoints
+   - GET /current - current track info
+   - GET /history - playback history
+   - GET /status - system status
+
+3. Create frontend interface
+   - Current track display with album art
+   - History list view
+   - Connection status indicators
+   - Minimal HTML/CSS/JavaScript
+
+4. Add WebSocket support
+   - Real-time track updates
+   - No page refresh needed
+
+5. Deploy web server
+   - Run on port 8080 or 3000
+   - Accessible from local network
+
+Expected outcome: Web page at http://server-ip:8080 showing current track
+
+
+PHASE 5 - SIDE-END DETECTION
+
+Tasks:
+1. Implement silence detection
+   - Monitor audio levels continuously
+   - Detect sustained low volume (30+ seconds)
+   - Trigger side-end event
+
+2. Add manual controls
+   - Web UI "Side Ended" button
+   - Keyboard shortcut
+   - API endpoint for external triggers
+
+3. Optional: Run-out groove detection
+   - Analyze repetitive patterns
+   - Detect characteristic vinyl end sounds
+
+Expected outcome: Automatic detection when vinyl side finishes
+
+
+PHASE 6 - DIGITAL INTERMISSION SYSTEM
+
+Tasks:
+1. Integrate Spotify API
+   - Authentication flow
+   - Search and stream capabilities
+   - Track feature analysis
+
+2. Build recommendation engine
+   - Analyze last played tracks
+   - Match genre, BPM, era
+   - Generate contextual playlist
+
+3. Implement audio source switching
+   - Crossfade from vinyl to digital
+   - Queue management
+   - Smooth transitions
+
+4. Create intermission UI
+   - Show upcoming tracks
+   - Manual skip/remove controls
+   - Resume vinyl button
+
+Expected outcome: Plays 3-5 related tracks between sides automatically
+
+
+PHASE 7 - REAL-TIME AUDIO AUGMENTATION (ADVANCED)
+
+Tasks:
+1. Research audio mixing pipeline
+   - Multi-track processing
+   - Low-latency DSP requirements
+   - Real-time effects
+
+2. Source digital audio stems
+   - Spotify API (when available)
+   - YouTube Music integration
+   - Pre-built stem library
+
+3. Build mixing engine
+   - Overlay digital audio on vinyl
+   - Volume controls per layer
+   - Effect presets (bass boost, ambient, etc)
+
+4. Create mixer interface
+   - Waveform display
+   - Faders for each layer
+   - Effect toggles
+
+Note: This phase is complex and optional
+
+Expected outcome: Can layer digital audio over vinyl playback
+
+
+PHASE 8 - POLISH AND FEATURES
+
+Tasks:
+1. Session recording
+   - Auto-record every session
+   - Generate listening statistics
+   - Exportable mixtapes
+
+2. Enhanced visualizations
+   - Real-time waveform display
+   - Frequency spectrum analyzer
+   - 3D vinyl spinning animation
+
+3. Collection management
+   - Track vinyl collection
+   - Play history per record
+   - Condition tracking
+
+4. Social features (optional)
+   - Shareable session summaries
+   - Public "now playing" page
+   - Multi-listener support
+
+Expected outcome: Polished, demo-ready application
+
+
+PHASE 9 - DOCUMENTATION AND DEPLOYMENT
+
+Tasks:
+1. Write comprehensive documentation
+   - Architecture diagrams
+   - API documentation
+   - Component explanations
+
+2. Create demo materials
+   - Video walkthrough
+   - Screenshot gallery
+   - Before/after comparisons
+
+3. Containerization
+   - Create Dockerfile
+   - Docker Compose setup
+   - Volume mounts for config
+
+4. Automation scripts
+   - Backup procedures
+   - Update scripts
+   - Health checks
+
+Expected outcome: Production-ready, fully documented system

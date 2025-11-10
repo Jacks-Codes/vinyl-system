@@ -1,0 +1,67 @@
+VINYL TO HOMEPOD STREAMING - SETUP INSTRUCTIONS
+
+Prerequisites:
+- Ubuntu Linux with PipeWire audio server
+- Python 3.12 or higher
+- Turntable connected to line-in jack
+- Apple TV on same network as Linux server
+
+Installation Steps:
+
+1. Install system dependencies
+   sudo apt update
+   sudo apt install -y pulseaudio-utils ffmpeg sox sqlite3 avahi-utils python3-pip python3-venv git
+
+2. Clone or navigate to repository
+   cd ~/vinyl-system
+
+3. Create Python virtual environment
+   python3 -m venv venv
+   source venv/bin/activate
+   pip install -r requirements.txt
+
+4. Configure audio routing
+   ./setup-audio-routing.sh
+
+5. Test audio capture (optional)
+   ./test-audio-capture.sh
+   aplay test-capture.wav
+
+6. Install auto-start service (optional)
+   ./INSTALL_SERVICE.sh
+
+7. Start streaming
+   ./START_STREAMING.sh
+
+Troubleshooting:
+
+No audio from turntable:
+   pactl list sources | grep -A 15 alsa_input
+   pactl set-source-mute alsa_input.pci-0000_00_1f.3.analog-stereo 0
+   pactl set-source-volume alsa_input.pci-0000_00_1f.3.analog-stereo 80%
+
+Cannot find Apple TV:
+   source venv/bin/activate
+   python stream-to-homepod.py
+
+Audio routing not active:
+   pactl list sinks short | grep vinyl
+   ./setup-audio-routing.sh
+
+Adjust line-in volume:
+   pactl set-source-volume alsa_input.pci-0000_00_1f.3.analog-stereo 60%
+
+Manual Commands:
+
+Restart audio routing:
+   ./setup-audio-routing.sh
+
+Monitor audio levels:
+   parec --device=alsa_input.pci-0000_00_1f.3.analog-stereo | sox -t raw -r 48000 -e signed -b 16 -c 2 - -n stat
+
+Check virtual sink status:
+   pactl list sinks short
+
+Discover AirPlay devices:
+   source venv/bin/activate
+   python stream-to-homepod.py
