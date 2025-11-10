@@ -1,0 +1,32 @@
+# Python
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.Python
+
+# Audio files
+*.wav
+*.mp3
+*.m4a
+*.aac
+test-capture.*
+
+# Temporary files
+*.tmp
+*.log
+.DS_Store
+
+# Local config
+*.local
+.env
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Cloned repos
+pyatv/

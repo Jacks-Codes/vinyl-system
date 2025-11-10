@@ -1,0 +1,13 @@
+[Unit]
+Description=Vinyl Turntable Audio Routing
+After=sound.target pipewire.service
+Wants=pipewire.service
+
+[Service]
+Type=oneshot
+User=jack
+ExecStart=/home/jack/vinyl-system/setup-audio-routing.sh
+RemainAfterExit=yes
+
+[Install]
+WantedBy=default.target

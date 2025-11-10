@@ -1,0 +1,6 @@
+pyatv==0.16.1
+aiohttp==3.13.2
+zeroconf==0.148.0
+cryptography==46.0.3
+miniaudio==1.61
+srptools==1.0.1
